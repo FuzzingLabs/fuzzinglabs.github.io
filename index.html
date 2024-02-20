@@ -8,57 +8,75 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background: #121212;
-            color: white;
-            font-family: 'Poppins', sans-serif;
             display: flex;
+            /* This line was missing */
             justify-content: center;
+            /* Centers container horizontally */
             align-items: center;
+            /* Centers container vertically */
             height: 100vh;
             margin: 0;
             background: linear-gradient(135deg, #121212, #17181A, #202125);
+            font-family: 'Poppins', sans-serif;
+            color: white;
         }
 
         .container {
             text-align: center;
             padding: 50px;
-            width: 20%;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            max-width: 300px;
+            width: 100%;
+            /* Make sure it does not exceed the width of the screen */
+            margin: auto;
+            /* This is fine, but unnecessary with flexbox centering */
         }
 
+
         .logo {
-            width: 250px;
+            width: 80%;
+            max-width: 250px;
             margin: 0 auto 30px;
             display: block;
-            border-radius: 0%;
         }
 
         a {
             display: block;
-            /* Updated this line */
             background: linear-gradient(90deg, hsla(345, 69%, 52%, 1) 0%, hsla(283, 31%, 56%, 1) 44%, hsla(215, 100%, 50%, 1) 100%);
             color: white;
             padding: 12px 20px;
             text-decoration: none;
             margin: 15px auto;
-            /* Updated to center the links */
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            width: 30%;
-            /* Set a width or max-width if you want to control the width of the buttons */
-            max-width: 200px;
-            /* Maximum width of buttons */
         }
 
         a:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            width: 60%;
+        }
 
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: auto;
+            }
+
+            .logo {
+                width: 50%;
+                margin-bottom: 20px;
+            }
+
+            a {
+                width: auto;
+                padding: 10px;
+                margin: 10px auto;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
