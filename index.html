@@ -21,7 +21,8 @@
 
         .container {
             text-align: center;
-            padding: 20px;
+            padding: 50px;
+            width: 20%;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             background: rgba(255, 255, 255, 0.1);
@@ -36,20 +37,28 @@
         }
 
         a {
-            display: inline-block;
-            background: linear-gradient(to right, #ce2d63, #0077ff);
+            display: block;
+            /* Updated this line */
+            background: linear-gradient(90deg, hsla(345, 69%, 52%, 1) 0%, hsla(283, 31%, 56%, 1) 44%, hsla(215, 100%, 50%, 1) 100%);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             text-decoration: none;
-            margin: 10px 0;
+            margin: 15px auto;
+            /* Updated to center the links */
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 30%;
+            /* Set a width or max-width if you want to control the width of the buttons */
+            max-width: 200px;
+            /* Maximum width of buttons */
         }
 
         a:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            width: 60%;
+
         }
     </style>
 </head>
@@ -60,6 +69,7 @@
         <div>
             <a href="https://twitter.com/FuzzingLabs" target="_blank">X</a>
             <a href="https://fr.linkedin.com/company/fuzzinglabs" target="_blank">LinkedIn</a>
+            <a href="https://github.com/fuzzinglabs" target="_blank">Github</a>
             <a href="https://fuzzinglabs.com/" target="_blank">Website</a>
             <a href="mailto:contact@fuzzinglabs.com">Email</a>
         </div>
