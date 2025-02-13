@@ -111,7 +111,7 @@
         // Load and display articles from the 'news' folder.
         async function loadArticles() {
             try {
-                const response = await fetch('news/');
+                const response = await fetch('/news_ai/news/');
                 const filesList = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(filesList, 'text/html');
@@ -123,7 +123,7 @@
                 for (const link of links) {
                     const relativeLink = link.getAttribute('href');
                     // Prepend "news/" so that the URL points to the correct folder.
-                    const articleURL = `news/${relativeLink}`;
+                    const articleURL = `/news_ai/news/${relativeLink}`;
 
                     const articleResponse = await fetch(articleURL);
                     const articleText = await articleResponse.text();
