@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI &amp; LLM Security Bulletin - Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            font-family: 'Open Sans', sans-serif;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);}.header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .articles-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .article-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-date {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .article-title {
+            font-size: 1.4em;
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .article-summary {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI &amp; LLM Security Bulletin</h1>
+            <p>Archive of all security bulletins</p>
+        </div>
+        <div class="articles-grid" id="articles-container">
+            <!-- Articles will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Extract article data from the fetched HTML content.
+        async function parseArticle(text) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const edition = doc.querySelector('.edition')?.textContent || '';
+            const summary = doc.querySelector('section p')?.textContent || '';
+            return { date: edition, summary: summary };
+        }
+
+        // Load and display articles from the 'news' folder.
+        async function loadArticles() {
+            try {
+                const response = await fetch('news/');
+                const filesList = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(filesList, 'text/html');
+                const links = Array.from(doc.getElementsByTagName('a'))
+                    .filter(a => a.getAttribute('href').endsWith('.html'));
+
+                const articlesContainer = document.getElementById('articles-container');
+
+                for (const link of links) {
+                    const relativeLink = link.getAttribute('href');
+                    // Prepend "news/" so that the URL points to the correct folder.
+                    const articleURL = `news/${relativeLink}`;
+
+                    const articleResponse = await fetch(articleURL);
+                    const articleText = await articleResponse.text();
+                    const articleData = await parseArticle(articleText);
+
+                    const articleElement = document.createElement('div');
+                    articleElement.className = 'article-card';
+                    articleElement.innerHTML = `
+            <div class="article-date">${articleData.date}</div>
+            <h2 class="article-title">AI &amp; LLM Security Bulletin</h2>
+            <p class="article-summary">${articleData.summary}</p>
+            <a href="${articleURL}" class="read-more">Read more →</a>
+          `;
+                    articlesContainer.appendChild(articleElement);
+                }
+            } catch (error) {
+                console.error('Error loading articles:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadArticles);
+    </script>
+</body>
+
+</html>

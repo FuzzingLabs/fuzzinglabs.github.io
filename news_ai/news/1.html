@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI &amp; LLM Security Bulletin - February 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            font-family: 'Open Sans', sans-serif;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 0;
+            color: #2c3e50;
+            /* Keep acronyms uppercase */
+        }
+
+        .header h1 span {
+            text-transform: none;
+        }
+
+        .edition {
+            font-size: 1em;
+            color: #6c757d;
+            margin-top: 8px;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 5px;
+            color: #2c3e50;
+            text-transform: lowercase;
+        }
+
+        h2:first-letter {
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            text-transform: lowercase;
+        }
+
+        h3:first-letter {
+            text-transform: uppercase;
+        }
+
+        /* Paragraphs, Lists & Links */
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Image Styling */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 4px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI &amp; LLM <span>security bulletin</span></h1>
+            <p class="edition"><strong>Edition:</strong> February 2025 • <strong>Issue #01</strong></p>
+        </div>
+
+        <section>
+            <h2>Executive summary</h2>
+            <p>
+                This edition of the AI &amp; LLM security bulletin highlights emerging vulnerabilities and innovative
+                defensive strategies in the AI landscape. We delve into techniques for backdooring large language
+                models, reveal critical flaws in popular tools like Deepseek R1, expose a remote code execution
+                vulnerability in Llama RPC, and discuss a critical CVE affecting Meta’s Llama Stack. Additionally, we
+                cover advances such as constitutional classifiers for safer outputs and introduce a new educational
+                initiative designed to empower the next generation of AI security professionals.
+            </p>
+        </section>
+
+        <section>
+            <h2>Vulnerability alerts &amp; exploit discoveries</h2>
+
+            <div>
+                <h3>Model security vulnerabilities</h3>
+                <ul>
+                    <li>
+                        <strong>Backdoor techniques in LLMs:</strong>
+                        <p>
+                            The <a href="https://blog.sshh.io/p/how-to-backdoor-large-language-models"
+                                target="_blank">SSHH Blog</a> details methods that could allow adversaries to implant
+                            hidden backdoors into LLMs, compromising their integrity and reliability.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>Llama RPC remote code execution (RCE):</strong>
+                        <p>
+                            A vulnerability highlighted on <a href="https://retr0.blog/blog/llama-rpc-rce"
+                                target="_blank">Retr0 Blog</a> shows how malicious actors could leverage Llama RPC
+                            interfaces to execute remote code, emphasizing the need for robust access controls.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>Critical CVE-2024-50050 in Meta Llama Stack:</strong>
+                        <p>
+                            <a href="https://www.oligo.security/blog/cve-2024-50050-critical-vulnerability-in-meta-llama-llama-stack"
+                                target="_blank">Oligo Security</a> reports a severe vulnerability affecting Meta’s Llama
+                            Stack, prompting urgent remediation to prevent exploitation.
+                        </p>
+                    </li>
+                </ul>
+                <img src="Test%202%201982bf1235b380ba9bdfe5ada1e36896/image.png" alt="LLM security vulnerability">
+            </div>
+
+            <div>
+                <h3>Tools &amp; platform vulnerabilities</h3>
+                <ul>
+                    <li>
+                        <strong>Deepseek R1 security flaws:</strong>
+                        <p>
+                            Two separate analyses by <a
+                                href="https://hiddenlayer.com/innovation-hub/deepsht-exposing-the-security-risks-of-deepseek-r1/"
+                                target="_blank">HiddenLayer</a> and <a
+                                href="https://www.kelacyber.com/blog/deepseek-r1-security-flaws/"
+                                target="_blank">KelaCyber</a> uncover multiple security risks within Deepseek R1, a tool
+                            increasingly used in LLM research. These findings call for immediate attention to patching
+                            and hardening efforts.
+                        </p>
+                    </li>
+                </ul>
+                <img src="Test%202%201982bf1235b380ba9bdfe5ada1e36896/image%201.png" alt="Deepseek R1 security flaw">
+            </div>
+
+            <div>
+                <h3>Emerging threats &amp; exploits</h3>
+                <ul>
+                    <li>
+                        <strong>Industry perspectives on emerging attacks:</strong>
+                        <p>
+                            Recent insights shared by <a
+                                href="https://x.com/trailofbits/status/1884981142715048185?s=12" target="_blank">Trail
+                                of Bits</a> and <a href="https://x.com/elder_plinius/status/1884716775754834107?s=46"
+                                target="_blank">Elder Plinius</a> discuss novel attack vectors, including prompt
+                            injection techniques and unconventional exploitation methods that challenge current security
+                            models.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Research &amp; development highlights</h2>
+            <div>
+                <h3>Constitutional classifiers for safer AI</h3>
+                <p>
+                    <a href="https://claude.ai/constitutional-classifiers" target="_blank">Claude.ai</a> introduces
+                    constitutional classifiers, a new methodology designed to enforce ethical and safety constraints on
+                    LLM outputs. This approach represents a significant step forward in proactive model defense.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Community &amp; industry updates</h2>
+            <div>
+                <h3>Educational initiative – AI Red Teamer</h3>
+                <p>
+                    To address the growing need for specialized AI security skills, <a
+                        href="https://academy.hackthebox.com/path/preview/ai-red-teamer" target="_blank">Hack The Box
+                        Academy</a> has launched an “AI Red Teamer” learning path. This program aims to equip
+                    cybersecurity professionals with the skills necessary to identify and mitigate AI-specific
+                    vulnerabilities.
+                </p>
+                <img src="Test%202%201982bf1235b380ba9bdfe5ada1e36896/image%202.png" alt="AI Red Teamer initiative">
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>
